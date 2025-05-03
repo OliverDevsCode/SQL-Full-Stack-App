@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import CreateAccountButton from './components/CreateAccountButton';
+import LoginForm from './components/LoginForm/LoginForm';
 
 function App() {
 
@@ -14,10 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Geek School</h1>
-        <CreateAccountButton />
-      </header>
+      <LoginForm/>
     </div>
   );
 }
