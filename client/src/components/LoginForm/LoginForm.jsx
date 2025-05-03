@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginForm.css';
+import { FaUser } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
 
 const LoginForm = () => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form reload behavior
+
+    // You can log the data or send it to an API
+    console.log('Submitted:', { username, password });
+
+
+    fetch(' http://localhost:5000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
   return (
     <div className='wrapper' >
-      <form action = "">
+      <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className='input-box'>
-          <input type = 'text' placeholder='Username' required></input>
+          <input type = 'text' placeholder='Username' required 
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          ></input>
+          <FaUser className='icon'/>
         </div>
         <div className='input-box'>
-          <input type = 'password' placeholder='Password' required></input>
+          <input type = 'password' placeholder='Password' required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ></input>
+          <FaLock className='icon'/>
         </div>
 
         <div className='remember'>
@@ -18,8 +55,12 @@ const LoginForm = () => {
         </div>
 
         <button type = 'submit'>Login</button>
-          <p>Don't have an account? <a href='#'>Register</a></p> 
-          {/* change href top point to the register section later */}
+
+        <div className='register-link '>
+        <p>Don't have an account? <a href='#'>Register</a></p> 
+        {/* change href top point to the register section later */}
+        </div>
+          
       </form>
       </div>
   );

@@ -4,15 +4,22 @@ const path = require('path');
 const app = express();
 const hostname = '127.0.0.1';
 const port = 5000;
+const cors = require('cors');
 
 const studentRoute = require('./routes/students.js')
+const loginRoute = require('./routes/login.js')
 
 app.use(express.json());
+
+app.use(cors({
+  origin: 'http://localhost:3000'  // only allow React app
+}));
 
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/students', studentRoute);  
+app.use('/api', loginRoute);  
 
 
 // centralized error handler

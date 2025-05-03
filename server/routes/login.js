@@ -12,14 +12,16 @@ function getHash(input, salt) {
 }
 
 router.post('/login',async(req,res)=>{
-  const { email , password} = req.body
+  const { username , password} = req.body
 
-  //checking email/password
+  console.log(`received ${username}, ${password}`)
 
-  if(!email){
+  //checking username/password
+
+  if(!username){
     return res
     .status(400)
-    .json({message: "Email not added"})
+    .json({message: "username not added"})
   }
 
   if(!password){
@@ -33,3 +35,5 @@ router.post('/login',async(req,res)=>{
   const passwordHash = getHash(password, salt);
   console.log(`Password Hash = ${passwordHash}`)
 })
+
+module.exports = router;
