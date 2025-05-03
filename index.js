@@ -14,11 +14,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/students', studentRoute);  
 
-// For any route not handled by your API, send back React's index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
 
 // centralized error handler
 app.use((err, req, res, next) => {

@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Login Home Screen</h1>
+        <h1>Welcome to Geek School</h1>
       </header>
     </div>
   );
