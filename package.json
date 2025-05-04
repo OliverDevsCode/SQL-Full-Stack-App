@@ -1,20 +1,15 @@
 {
-  "name": "database_server_test",
+  "name": "school-project-mysql",
   "version": "1.0.0",
-  "description": "Testing MYSQL with node js",
+  "description": "Testing MYSQL with node js- full stack mono repo",
   "license": "MIT",
   "author": "Oliver",
-  "type": "commonjs",
-  "main": "server/index.js",
+  "private": true,
   "scripts": {
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon index.js",
+    "server": "npm start --prefix server",
     "client": "npm start --prefix client"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

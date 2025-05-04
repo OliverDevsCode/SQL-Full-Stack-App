@@ -2,7 +2,4 @@
 
 - Installation
 
-cd whole folder npm install
-cd client npm install
-
-cd whole folder npm start
+npm run install-all
