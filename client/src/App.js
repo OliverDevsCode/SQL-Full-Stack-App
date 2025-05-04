@@ -1,6 +1,9 @@
 import './App.css';
 import React from 'react';
 import LoginForm from './components/LoginForm/LoginForm';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
+
 
 function App() {
 
@@ -15,7 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      <LoginForm/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<LoginForm />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
