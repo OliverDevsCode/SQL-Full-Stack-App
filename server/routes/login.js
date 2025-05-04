@@ -34,6 +34,16 @@ router.post('/login',async(req,res)=>{
   const salt = crypto.randomBytes(16).toString('hex');
   const passwordHash = getHash(password, salt);
   console.log(`Password Hash = ${passwordHash}`)
+
+  const statement = `SELECT * FROM users WHERE UserId = "${username}"`;
+  db.query(statement, (err, results) => {
+    if (err) return next(err);
+    console.log(results)
+    res.json(results);
+  });
+
+  
+
 })
 
 module.exports = router;
