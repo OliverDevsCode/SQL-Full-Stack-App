@@ -18,6 +18,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #394A43;
+  background-image: url('../public/login-bg.jpg');
 }
 
 code {
