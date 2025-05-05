@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import './LoginForm.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'; 
+
 
 const LoginForm = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form reload behavior
@@ -25,6 +28,11 @@ const LoginForm = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        console.log(data.token);
+        const  token  = data.token;
+        localStorage.setItem('authToken', token);
+        navigate('/dashboard', { replace: true });
+
       })
       .catch(error => {
         console.error('Error:', error);
