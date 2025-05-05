@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var db = mysql.createConnection({
   host: "localhost",
-  user: "nodeAccount",
-  password: "node123!",
-  database: 'school'
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 db.connect(function(err) {
