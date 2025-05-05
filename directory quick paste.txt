@@ -1,0 +1,5 @@
+cd "C:\Users\Player One\Documents\A-level Computer Science\MySQL Projects\SQL-Full-Stack-App\server"
+
+cd "C:\Users\Player One\Documents\A-level Computer Science\MySQL Projects\SQL-Full-Stack-App\client"
+
+cd "C:\Users\Player One\Documents\A-level Computer Science\MySQL Projects\SQL-Full-Stack-App\"

@@ -4,10 +4,12 @@ const router = express.Router();  // Corrected this line
 const db = require('../database.js');
 const crypto = require('crypto');
 
+const jwt = require('jsonwebtoken');
 
-function getHash(input, salt) {
+
+function getHash(input) {
   const hash = crypto.createHash('sha256');
-  hash.update(input + salt);
+  hash.update(input);
   return hash.digest('hex');
 }
 
@@ -31,16 +33,38 @@ router.post('/login',async(req,res)=>{
   }
 
   //logic for authentication
-  const salt = crypto.randomBytes(16).toString('hex');
-  const passwordHash = getHash(password, salt);
-  console.log(`Password Hash = ${passwordHash}`)
+  const login_password_Hash = getHash(password);
+  console.log(`Password Hash = ${login_password_Hash}`)
 
-  const statement = `SELECT * FROM users WHERE UserId = "${username}"`;
-  db.query(statement, (err, results) => {
+  const statement = `SELECT * FROM users WHERE UserId = ?`;
+  db.query(statement, [username], (err, results) => {
     if (err) return next(err);
     console.log(results)
-    res.json(results);
+    
+    //only check is results appear
+    if(results.length > 0){
+      const storedHash = results[0].password_hash;
+      if(login_password_Hash == storedHash){
+
+        const payload = { user_id: results[0].UserId, email: results[0].email };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        return res.status(200).json({
+          message: "Login successful",
+          token: token
+        });
+
+      }else{
+        return res.status(401)
+        .json({message: "Password Incorrect"})
+      }
+    }else{
+      return res.status(404)
+        .json({message: "User does not exist"})
+    }
+    
   });
+
 
   
 

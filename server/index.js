@@ -5,6 +5,7 @@ const app = express();
 const hostname = '127.0.0.1';
 const port = 5000;
 const cors = require('cors');
+require('dotenv').config();
 
 const studentRoute = require('./routes/students.js')
 const loginRoute = require('./routes/login.js')
