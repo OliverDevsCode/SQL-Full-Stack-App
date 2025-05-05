@@ -1,33 +1,37 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
+import  Navbar  from '../Navbar/Navbar';
+import  Timetable  from '../Timetable/Timetable';
+import  ProfileCard  from '../ProfileCard/ProfileCard';
 
-const Dashboard = () => {
+import './Dashboard.css';
 
-    //requesting data for UI elements
-    const token = localStorage.getItem('authToken');
+export default function Dashboard() {
+  const [active, setActive] = useState('timetable');
+  const [lessons, setLessons] = useState([]);
+  const [profile, setProfile] = useState({});
 
-    // Call your protected endpoint
-    fetch('http://localhost:5000/students/protected-data', {
-      method: 'GET',                     // or 'POST', etc.
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`  // <-- include the JWT here
-      }
-    })
-      .then(res => {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      })
-      .then(data => {
-        console.log('Protected data:', data);
-      })
-      .catch(err => {
-        console.error('Fetch error:', err);
-        // If 401/403, you can navigate back to /login here
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch('http://localhost:5000/api/dashboard/data', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
       });
+      const { data, user } = await res.json();
+      console.log(data)
+      setLessons(data.lessons);
+      setProfile(user.profile);
+    }
+    fetchData();
+  }, []);
 
   return (
-    <div>Dashboard</div>
+    <div className="dashboard">
+      <Navbar active={active} onNavigate={setActive} logout={() => {/* logout logic */}} />
+      <main>
+        {active === 'timetable' && <Timetable lessons={lessons} />}
+        {active === 'profile' && <ProfileCard profile={profile} />}
+      </main>
+    </div>
   );
-};
-
-export default Dashboard
+}
