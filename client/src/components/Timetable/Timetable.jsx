@@ -1,20 +1,37 @@
 import React from 'react';
 import LessonCard from '../LessonCard/LessonCard';
 
+// Utility to break an array into subarrays of length `size`
+function chunkArray(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}
+
 const Timetable = ({ lessons }) => {
+  // Split into columns of 5
+  const columns = chunkArray(lessons, 5);
+
   return (
     <div className="timetable">
-      {lessons.map((lesson, idx) => (
-        <LessonCard
-          key={idx}                  // or lesson.id if you have one
-          period={lesson.Period}     // map Period → period
-          subject={lesson.title}     // map title  → subject
-          teacher={lesson.teacherName} // map teacherName → teacher
-          location={lesson.location} // map location → location
-        />
+      {columns.map((col, colIdx) => (
+        <div className="timetable-column" key={colIdx}>
+          {col.map((lesson, idx) => (
+            <LessonCard
+              key={lesson.id ?? idx}
+              period={lesson.Period}
+              subject={lesson.title}
+              teacher={lesson.teacherName}
+              location={lesson.location}
+            />
+          ))}
+        </div>
       ))}
     </div>
   );
-}
+};
+
 
 export default Timetable;

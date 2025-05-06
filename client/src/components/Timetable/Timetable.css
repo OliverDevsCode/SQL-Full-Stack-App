@@ -1,0 +1,12 @@
+.timetable {
+    display: flex;
+    gap: 20px;     /* space between each column */
+    padding: 10%;
+  }
+  
+  .timetable-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;     /* space between cards inside each column */
+  }
+  
