@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-gutter: stable;
+  
+  
 }
 
 body {
@@ -11,14 +14,8 @@ body {
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background-color: #394A43;
-  background-image: url('../public/login-bg.jpg');
+  background-image: url('../public/app-bg.jpg');
 }
 
 code {

@@ -12,6 +12,7 @@
   /* NEW: smooth hover transition */
   transition: transform .2s ease;
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .lesson-card:hover {

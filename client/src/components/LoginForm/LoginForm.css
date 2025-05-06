@@ -1,9 +1,27 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .wrapper{
   width: 450px;
   color: whitesmoke;
   background-color: grey;
   border-radius: 10px;
   padding: 30px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .wrapper h1{

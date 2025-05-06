@@ -1,24 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './LoginForm.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom'; 
-
+import { RotateLoader } from "react-spinners";
 
 const LoginForm = () => {
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const navigate = useNavigate(); 
 
+  // Check if the token is valid
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      setCheckingAuth(false);
+      return;
+    }
+
+    const verifyToken = async () => {
+      try {
+        await axios.get('http://localhost:5000/api/auth/verify-token', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        navigate('/dashboard', { replace: true });
+      } catch (error) {
+        localStorage.removeItem('authToken');
+        setCheckingAuth(false);
+      }
+    };
+
+    verifyToken();
+  }, [navigate]);
+
+  // Show spinner when checking auth or logging in
+  if (checkingAuth || isLoggingIn) {
+    return (
+      <div className="spinner-container">
+        <RotateLoader loading={true} color="#36d7b7" size={30} />
+      </div>
+    );
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form reload behavior
+    e.preventDefault();
+    setIsLoggingIn(true);
 
-    // You can log the data or send it to an API
-    console.log('Submitted:', { username, password });
-
-
-    fetch(' http://localhost:5000/api/login', {
+    fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -27,51 +60,54 @@ const LoginForm = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        console.log(data.token);
-        const  token  = data.token;
+        const token = data.token;
         localStorage.setItem('authToken', token);
         navigate('/dashboard', { replace: true });
-
       })
       .catch(error => {
         console.error('Error:', error);
+        setIsLoggingIn(false);
       });
   };
 
   return (
-    <div className='wrapper' >
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <div className='input-box'>
-          <input type = 'text' placeholder='Username' required 
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          ></input>
-          <FaUser className='icon'/>
-        </div>
-        <div className='input-box'>
-          <input type = 'password' placeholder='Password' required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <FaLock className='icon'/>
-        </div>
-
-        <div className='remember'>
-          <label><input type='checkbox'></input>Remember me</label>
-        </div>
-
-        <button type = 'submit'>Login</button>
-
-        <div className='register-link '>
-        <p>Don't have an account? <a href='/register'>Register</a></p> 
-        {/* change href top point to the register section later */}
-        </div>
-          
-      </form>
+    <div className="login-container">
+      <div className="wrapper">
+        <form onSubmit={handleSubmit}>
+          <h1>Login</h1>
+          <div className='input-box'>
+            <input 
+              type='text' 
+              placeholder='Username' 
+              required 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <FaUser className='icon'/>
+          </div>
+          <div className='input-box'>
+            <input 
+              type='password' 
+              placeholder='Password'
+              required 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <FaLock className='icon'/>
+          </div>
+          <div className='remember'>
+            <label>
+              <input type='checkbox'/>Remember me
+            </label>
+          </div>
+          <button type='submit'>Login</button>
+          <div className='register-link'>
+            <p>Don't have an account? <a href='/register'>Register</a></p>
+          </div>
+        </form>
       </div>
+    </div>
   );
 };
 
-export default LoginForm
+export default LoginForm;

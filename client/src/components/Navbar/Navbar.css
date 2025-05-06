@@ -1,29 +1,86 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  background-color: #1a3d2f; /* dark green */
-  padding: 1rem;
+  background: #11302a; /* slightly darker base */
+  background-image: linear-gradient(180deg, #1a3d2f 0%, #11302a 100%);
+  padding: 1.5rem 1rem;  
+  width: 240px;
   height: 100vh;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10;
 }
 
 .nav-btn {
   background: none;
   border: none;
-  color: white;
+  color: #e0f2f1;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
   cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: 
+    background-color 200ms ease, 
+    padding-left 200ms ease,
+    color 200ms ease;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding-left: 1rem;
+  color: #ffffff;
 }
 
 .nav-btn.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #64ffda;
+  background-color: #64ffda;
+  color: #11302a;
+  font-weight: 600;
+  border-left: none;           /* remove old border */
+  box-shadow: inset 4px 0 0 0 #009e7f;
+}
+
+.nav-btn.active .icon {
+  color: #11302a;              /* ensure icon matches text */
+}
+
+.nav-btn .icon {
+  font-size: 1.25rem;
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.nav-btn:hover .icon {
+  transform: translateX(2px);
 }
 
 .logout {
   margin-top: auto;
+  color: #ff6b6b;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.logout:hover {
+  background-color: rgba(255, 107, 107, 0.1);
   color: #ff4d4f;
+}
+
+/* Optional: custom scrollbar for sidebar if overflow */
+.navbar {
+  overflow-y: auto;
+}
+.navbar::-webkit-scrollbar {
+  width: 6px;
+}
+.navbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.navbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 3px;
 }

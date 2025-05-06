@@ -12,14 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public */}
-        <Route
-          path="/login"
-          element={
-            localStorage.getItem('authToken')
-              ? <Navigate to="/dashboard" replace />
-              : <LoginForm />
-          }
-        />
+        <Route path="/login" element={<LoginForm />} />
 
         {/* Protected: any child of PrivateRoute */}
         <Route element={<PrivateRoute />}>
