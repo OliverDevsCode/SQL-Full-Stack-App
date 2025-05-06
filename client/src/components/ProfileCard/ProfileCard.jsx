@@ -1,11 +1,15 @@
 import React from 'react'
+import './ProfileCard.css';
 
-const ProfileCard = ({ profile }) => {
+const ProfileCard = ({ profile, UserId }) => {
+  console.log("Profile Recieved:")
+  console.log(profile)
   return (
     <div className="profile-card">
-      <p>ID: {profile.id}</p>
-      <p>DOB: {profile.dob}</p>
-      <p>{profile.email}</p>
+      <p>Account ID: {UserId}</p>
+      <p>Name: {profile.firstName + " "+ profile.surname}</p>
+      <p>Form: {profile.formName}</p>
+      <p>Email: {profile.email}</p>
     </div>
   );
 }

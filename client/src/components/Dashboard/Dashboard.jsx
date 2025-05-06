@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [active, setActive] = useState('timetable');
   const [lessons, setLessons] = useState([]);
   const [profile, setProfile] = useState({});
+  const [UserId, setUserId] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -19,8 +20,10 @@ export default function Dashboard() {
       });
       const { data, user } = await res.json();
       console.log(data)
+      console.log(user)
       setLessons(data.lessons);
-      setProfile(user.profile);
+      setProfile(data.profile);
+      setUserId(user.user_id)
     }
     fetchData();
   }, []);
@@ -30,7 +33,7 @@ export default function Dashboard() {
       <Navbar active={active} onNavigate={setActive} logout={() => {/* logout logic */}} />
       <main>
         {active === 'timetable' && <Timetable lessons={lessons} />}
-        {active === 'profile' && <ProfileCard profile={profile} />}
+        {active === 'profile' && <ProfileCard profile={profile} UserId={UserId} />}
       </main>
     </div>
   );
