@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const navigate = useNavigate(); 
+  const [rememberMe, setRememberMe] = useState(false);
 
   // Check if the token is valid
   useEffect(() => {
@@ -56,7 +57,7 @@ const LoginForm = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password , rememberMe})
     })
       .then(res => res.json())
       .then(data => {
@@ -97,7 +98,10 @@ const LoginForm = () => {
           </div>
           <div className='remember'>
             <label>
-              <input type='checkbox'/>Remember me
+              <input type='checkbox'
+              value={rememberMe}
+              onChange= {(e)=> setRememberMe(e.target.checked)}
+              />Remember me
             </label>
           </div>
           <button type='submit'>Login</button>

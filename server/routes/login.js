@@ -14,9 +14,9 @@ function getHash(input) {
 }
 
 router.post('/login',async(req,res)=>{
-  const { username , password} = req.body
+  const { username , password, rememberMe} = req.body
 
-  console.log(`received ${username}, ${password}`)
+  console.log(`received username:${username}, password:${password}, rememberMe: ${rememberMe}`)
 
   //checking username/password
 
@@ -47,7 +47,12 @@ router.post('/login',async(req,res)=>{
       if(login_password_Hash == storedHash){
 
         const payload = { user_id: results[0].UserId, email: results[0].email };
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // Choose token lifetime
+        const expiresIn = rememberMe ? '30d' : '1h';
+
+        // Sign the JWT
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
         return res.status(200).json({
           message: "Login successful",
