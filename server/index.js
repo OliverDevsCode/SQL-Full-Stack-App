@@ -10,6 +10,7 @@ require('dotenv').config();
 const studentRoute = require('./routes/students.js')
 const loginRoute = require('./routes/login.js')
 const dashboard = require('./routes/dashboard.js')
+const auth = require('./routes/auth.js')
 
 app.use(express.json());
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/students', studentRoute);  
 app.use('/api', loginRoute);  
 app.use('/api/dashboard', dashboard);  
+app.use('/api/auth', auth);  
 
 
 // centralized error handler

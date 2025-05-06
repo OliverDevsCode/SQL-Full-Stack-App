@@ -7,4 +7,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
   color: white; /* adjust as needed depending on your background */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  transform: scale(1.2); /* 1.0 = normal size, 1.2 = 120% */
+  transform-origin: center;
 }
