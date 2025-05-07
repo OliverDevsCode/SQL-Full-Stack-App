@@ -15,7 +15,7 @@ Install the server with:
 ```bash
 npm run install-all
 ```
-Add an env file in server folder to connect to database and create JWTs
+Add an env file in server folder to connect to database and create JWTs- I have added an example version in the codebase for you to use to test if needed.
 ```env
 JWT_SECRET= yoursecretkey
 DB_HOST = localhost
