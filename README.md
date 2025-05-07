@@ -1,6 +1,6 @@
 # SQL Mini Full Stack App
 
-A simple full-stack application using MySQL 8, Node.js and npm scripts to install, build, and run both server and client.
+A simple full-stack application using MySQL 8, Node.js and npm scripts to install, build, and run both server and client. This project is intended for local hosting and educational purposes only.
 
 ## Prerequisites
 
