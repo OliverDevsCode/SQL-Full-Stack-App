@@ -34,3 +34,32 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
 }
+
+/* ── Collapse to icon‐only on small screens ── */
+@media (max-width: 768px) {
+  .dashboard .navbar {
+    width: 60px;                /* slim down */
+    overflow: hidden;           /* hide the labels */
+    transition: width 0.3s ease;
+    padding: 1rem 0;            /* vertical only */
+  }
+
+  .dashboard .navbar .nav-btn {
+    justify-content: center;    /* center the icons */
+    padding: 1rem 0;            /* make them tappable */
+  }
+
+  .dashboard .navbar .nav-btn span {
+    display: none;              /* hide the text label */
+  }
+
+  /* optional: expand back out on hover */
+  .dashboard .navbar:hover {
+    width: 240px;
+  }
+
+  .dashboard .navbar:hover .nav-btn span {
+    display: inline-block;
+    margin-left: 0.75rem;
+  }
+}

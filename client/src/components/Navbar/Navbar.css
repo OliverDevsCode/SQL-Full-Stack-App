@@ -11,6 +11,7 @@
   z-index: 10;
 }
 
+
 .nav-btn {
   background: none;
   border: none;
@@ -83,4 +84,35 @@
 .navbar::-webkit-scrollbar-thumb {
   background-color: rgba(255,255,255,0.2);
   border-radius: 3px;
+}
+
+/* ────────────────────────────────────────────
+   Collapse to icon-only navbar on small screens
+──────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 60px;               /* just wide enough for the icon */
+    padding: 1rem 0;           /* vertical padding only */
+  }
+
+  .nav-btn {
+    justify-content: center;   /* center icon */
+    padding: 1rem 0;           /* square touch target */
+  }
+
+  .nav-btn span {
+    display: none;             /* hide the text label */
+  }
+
+  /* Optional: on hover of the collapsed bar, show labels */
+  .navbar:hover {
+    width: 240px;
+    transition: width 0.3s ease;
+  }
+
+  .navbar:hover .nav-btn span {
+    display: inline-block;
+    margin-left: 0.75rem;
+  }
 }
