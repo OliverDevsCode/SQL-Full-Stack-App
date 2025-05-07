@@ -3,9 +3,20 @@ import LessonCard from '../LessonCard/LessonCard';
 
 // Utility to break an array into subarrays of length `size`
 function chunkArray(arr, size) {
+
+const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+let flat = arr.flat();
+
+flat.sort((a, b) => {
+  const dayDiff = dayOrder.indexOf(a.Day) - dayOrder.indexOf(b.Day);
+  if (dayDiff !== 0) return dayDiff;
+  return a.Period - b.Period;
+});
+
   const out = [];
-  for (let i = 0; i < arr.length; i += size) {
-    out.push(arr.slice(i, i + size));
+  for (let i = 0; i < flat.length; i += size) {
+    out.push(flat.slice(i, i + size));
   }
   return out;
 }

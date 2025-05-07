@@ -4,6 +4,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import { RotateLoader } from "react-spinners";
 
+import './PrivateRoute.css';
+
+
 
 const PrivateRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // null means loading
@@ -35,7 +38,7 @@ const PrivateRoute = () => {
   }, [token]);
 
   if (isAuthenticated === null) {
-    return <div> <RotateLoader loading={true} color="#36d7b7" size={30} /></div>; 
+    return <div className="spinner-container"> <RotateLoader loading={true} color="#36d7b7" size={30} /></div>; 
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
