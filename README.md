@@ -18,6 +18,7 @@ npm run install-all
 Add an env file in server folder to connect to database and create JWTs
 ```env
 JWT_SECRET= yoursecretkey
+DB_HOST = localhost
 DB_USER = xxx
 DB_PASSWORD = xxxx
 DB_NAME = school
