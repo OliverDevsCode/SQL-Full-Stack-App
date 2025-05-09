@@ -10,7 +10,7 @@ var db = mysql.createConnection({
 
 db.connect(function(err) {
   if (err) throw err;
-  console.log("Connected to SQL Database!");
+  console.log(`Connected to SQL Database! HOST:${process.env.DB_HOST}`);
 
 });
 
