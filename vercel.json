@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run install-all",
+  "buildCommand": "npm run install-all && npm run build --prefix client",
   "devCommand": "npm run start",
-  "outputDirectory": "client/dist", 
+  "outputDirectory": "client/build", 
   "framework": null,
   "routes": [
     {
