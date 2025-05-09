@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "npm run install-all",
+  "devCommand": "npm run start",
+  "outputDirectory": "client/dist", 
+  "framework": null,
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
