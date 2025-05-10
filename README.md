@@ -7,9 +7,9 @@ A simple full-stack application using MySQL 8, Node.js and npm scripts to instal
 I have seperated this repository across 2 servers to allow you to test it out:
   https://react-school-front-end.vercel.app/ - This is the client folder running via vercel
 
-Demo Login
-  Username: 1
-  Password: Test (Case Sensitive)
+### Demo Login
+  - Username: 1
+  - Password: Test (Case Sensitive)
 
 ## Prerequisites
 
