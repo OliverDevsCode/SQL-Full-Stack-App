@@ -2,6 +2,15 @@
 
 A simple full-stack application using MySQL 8, Node.js and npm scripts to install, build, and run both server and client. This project is intended for local hosting and educational purposes only.
 
+## Running Demo
+
+I have seperated this repository across 2 servers to allow you to test it out:
+  https://react-school-front-end.vercel.app/ - This is the client folder running via vercel
+
+Demo Login
+  Username: 1
+  Password: Test (Case Sensitive)
+
 ## Prerequisites
 
 - [Node.js & npm](https://nodejs.org/) (v14+ recommended)
