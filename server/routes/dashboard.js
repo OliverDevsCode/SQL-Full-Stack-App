@@ -24,20 +24,23 @@ router.get('/data', authenticateJWT, (req, res, next) => {
 
     // 2️⃣ Then: load lessons
     const lessonsSql = `
-      SELECT
-        l.title,
-        l.location, 
-        l.Period,
-        l.Day,
-        CONCAT(LEFT(u.firstName, 1), '. ', u.surname) AS teacherName
-      FROM classes AS c
-      INNER JOIN lessons AS l
-        ON l.ClassId   = c.ClassId
-      INNER JOIN users  AS u
-        ON l.TeacherId = u.UserId
-      WHERE
-        c.UserId = ?;
-    `;
+    SELECT
+      l.title,
+      l.location, 
+      l.Period,
+      l.Day,
+      CONCAT(LEFT(u.firstName, 1), '. ', u.surname) AS teacherName
+    FROM enrollments AS e
+    INNER JOIN classes AS c
+      ON e.ClassId = c.ClassId
+    INNER JOIN lessons AS l
+      ON l.ClassId = c.ClassId
+    INNER JOIN users AS u
+      ON l.TeacherId = u.UserId
+    WHERE
+      e.UserId = ?;
+  `;
+
     
     db.query(lessonsSql, [userId], (err, lessonsResults) => {
       if (err) return next(err);

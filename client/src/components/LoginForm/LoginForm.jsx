@@ -53,22 +53,29 @@ const LoginForm = () => {
     setIsLoggingIn(true);
 
     fetch('http://localhost:5000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password , rememberMe})
-    })
-      .then(res => res.json())
-      .then(data => {
-        const token = data.token;
-        localStorage.setItem('authToken', token);
-        navigate('/dashboard', { replace: true });
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        setIsLoggingIn(false);
-      });
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password, rememberMe })
+        })
+        .then(async res => {
+          const data = await res.json();
+          
+          if (!res.ok) {
+            // Handle status-specific errors
+            window.alert(data.message || 'Login failed');
+            throw new Error(data.message); // Ensure .catch is triggered
+          }
+
+          const token = data.token;
+          localStorage.setItem('authToken', token);
+          navigate('/dashboard', { replace: true });
+        })
+        .catch(error => {
+          console.error('Login error:', error);
+          setIsLoggingIn(false);
+});
   };
 
   return (

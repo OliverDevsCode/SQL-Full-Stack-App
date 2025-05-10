@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import LoginForm from './components/LoginForm/LoginForm';
+import SignUpForm from './components/SignUpForm/SignUpForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
@@ -13,6 +14,9 @@ function App() {
       <Routes>
         {/* Public */}
         <Route path="/login" element={<LoginForm />} />
+
+        {/* Public */}
+        <Route path="/register" element={<SignUpForm />} />
 
         {/* Protected: any child of PrivateRoute */}
         <Route element={<PrivateRoute />}>

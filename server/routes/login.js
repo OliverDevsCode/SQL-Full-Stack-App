@@ -61,11 +61,14 @@ router.post('/login',async(req,res)=>{
 
       }else{
         return res.status(401)
-        .json({message: "Password Incorrect"})
+        .json({message: "Credentials Incorrect"})
+        //password wrong
       }
     }else{
       return res.status(404)
-        .json({message: "User does not exist"})
+        .json({message: "Credentials Incorrect"})
+        //Username wrong
+
     }
     
   });

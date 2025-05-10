@@ -7,8 +7,8 @@ const port = 5000;
 const cors = require('cors');
 require('dotenv').config();
 
-const studentRoute = require('./routes/students.js')
 const loginRoute = require('./routes/login.js')
+const registerRoute = require('./routes/register.js')
 const dashboard = require('./routes/dashboard.js')
 const auth = require('./routes/auth.js')
 
@@ -21,8 +21,8 @@ app.use(cors({
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.use('/students', studentRoute);  
 app.use('/api', loginRoute);  
+app.use('/api', registerRoute);  
 app.use('/api/dashboard', dashboard);  
 app.use('/api/auth', auth);  
 
