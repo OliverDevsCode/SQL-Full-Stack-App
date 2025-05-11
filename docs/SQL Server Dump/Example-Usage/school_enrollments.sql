@@ -16,35 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `grades`
+-- Table structure for table `enrollments`
 --
 
-DROP TABLE IF EXISTS `grades`;
+DROP TABLE IF EXISTS `enrollments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `grades` (
-  `GradeId` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `enrollments` (
+  `UserId` int NOT NULL,
   `ClassId` int NOT NULL,
-  `StudentId` int NOT NULL,
-  `grade` varchar(10) DEFAULT NULL,
-  `topic` varchar(255) DEFAULT NULL,
-  `feedback` text,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`GradeId`),
+  PRIMARY KEY (`UserId`,`ClassId`),
   KEY `ClassId` (`ClassId`),
-  KEY `StudentId` (`StudentId`),
-  CONSTRAINT `grades_ibfk_1` FOREIGN KEY (`ClassId`) REFERENCES `classes` (`ClassId`),
-  CONSTRAINT `grades_ibfk_2` FOREIGN KEY (`StudentId`) REFERENCES `users` (`UserId`)
+  CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`ClassId`) REFERENCES `classes` (`ClassId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `grades`
+-- Dumping data for table `enrollments`
 --
 
-LOCK TABLES `grades` WRITE;
-/*!40000 ALTER TABLE `grades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `grades` ENABLE KEYS */;
+LOCK TABLES `enrollments` WRITE;
+/*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
+INSERT INTO `enrollments` VALUES (1,1),(20,1),(1,2),(20,2),(1,3),(1,4),(20,4);
+/*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

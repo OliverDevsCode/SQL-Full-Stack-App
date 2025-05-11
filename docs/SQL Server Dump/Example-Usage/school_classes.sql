@@ -24,13 +24,10 @@ DROP TABLE IF EXISTS `classes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `classes` (
   `ClassId` int NOT NULL AUTO_INCREMENT,
-  `UserId` int NOT NULL,
   `SubjectId` int NOT NULL,
   `class_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ClassId`),
-  KEY `classes_ibfk_1` (`UserId`),
   KEY `classes_ibfk_3` (`SubjectId`),
-  CONSTRAINT `classes_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`),
   CONSTRAINT `classes_ibfk_3` FOREIGN KEY (`SubjectId`) REFERENCES `subjects` (`SubjectId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +38,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES (1,1,1,'13P/Ma1'),(2,1,2,'13Q-CS1'),(3,1,4,'13P/Bu1 '),(4,1,3,'13P/Ph1 ');
+INSERT INTO `classes` VALUES (1,1,'13P/Ma1'),(2,2,'13Q/CS1'),(3,4,'13P/Bu1 '),(4,3,'13P/Ph1 ');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-07 20:13:41
+-- Dump completed on 2025-05-10 22:48:59

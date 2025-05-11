@@ -34,7 +34,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `email` (`email`),
   KEY `FormId_idx` (`FormId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'0001@GeekSchool.com','532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25','Oliver','DevsCode',1,'student','2025-05-03 19:38:56'),(2,'C.L@GeekSchool.com','n/a','Charles','Leclerc',2,'teacher','2025-05-05 20:30:10'),(3,'A.Turing@GeekSchool.com','n/a','Alan','Turing',5,'teacher','2025-05-06 12:40:16'),(4,'l.euler@GeekSchool.com','n/a','Leonhard','Euler',4,'teacher','2025-05-06 21:05:59'),(5,'s.jobs@GeekSchool.com','n/a','Steve','Jobs',2,'teacher','2025-05-06 21:05:59'),(6,'m.planck@GeekSchool.com','n/a','Max','Planck',3,'teacher','2025-05-06 21:05:59');
+INSERT INTO `users` VALUES (1,'0001@GeekSchool.com','532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25','Oliver','DevsCode',1,'student','2025-05-03 19:38:56'),(2,'C.L@GeekSchool.com','n/a','Charles','Leclerc',2,'teacher','2025-05-05 20:30:10'),(3,'A.Turing@GeekSchool.com','n/a','Alan','Turing',5,'teacher','2025-05-06 12:40:16'),(4,'l.euler@GeekSchool.com','n/a','Leonhard','Euler',4,'teacher','2025-05-06 21:05:59'),(5,'s.jobs@GeekSchool.com','n/a','Steve','Jobs',2,'teacher','2025-05-06 21:05:59'),(6,'m.planck@GeekSchool.com','n/a','Max','Planck',3,'teacher','2025-05-06 21:05:59'),(20,'0020@GeekSchool.com','532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25','Oscar','Orlanda',3,'student','2025-05-10 21:13:39');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-07 20:13:41
+-- Dump completed on 2025-05-10 22:49:00
