@@ -9,12 +9,93 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   font-size: 20px;
 
-  /* NEW: smooth hover transition */
   transition: transform .2s ease;
   padding-bottom: 10px;
 }
 
 .profile-card:hover {
-  /* NEW: subtle pop on hover */
   transform: scale(1.05);
+}
+
+.profile-card button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-card button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-card button.delete-account {
+  color: rgb(255, 86, 86);
+  border-color: rgba(255, 86, 86, 0.4);
+}
+
+.profile-card button.delete-account:hover {
+  background: rgba(255, 86, 86, 0.15);
+}
+
+.profile-card button.change-password {
+  color: rgb(170, 255, 123);
+  border-color: rgba(170, 255, 123, 0.4);
+}
+
+.profile-card button.change-password:hover {
+  background: rgba(170, 255, 123, 0.1);
+}
+
+.Delete-Check{
+  text-align: center;
+}
+
+.profile-card .confirm-delete {
+  color: rgb(255, 86, 86);
+  border-color: rgba(255, 86, 86, 0.4);
+}
+
+.profile-card .confirm-delete:hover {
+  background: rgba(255, 86, 86, 0.15);
+}
+
+.profile-card .cancel-delete {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.profile-card .cancel-delete:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.Change-Password{
+  text-align: center;
+}
+
+.Change-Password input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: #FFF;
+  
 }

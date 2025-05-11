@@ -8,6 +8,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const loginRoute = require('./routes/login.js')
+const accountRoute = require('./routes/account.js')
 const registerRoute = require('./routes/register.js')
 const dashboard = require('./routes/dashboard.js')
 const auth = require('./routes/auth.js')
@@ -22,6 +23,7 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api', loginRoute);  
+app.use('/api/account', accountRoute);  
 app.use('/api', registerRoute);  
 app.use('/api/dashboard', dashboard);  
 app.use('/api/auth', auth);  

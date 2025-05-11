@@ -3,6 +3,7 @@ import React from 'react'
 import { SlCalender } from "react-icons/sl";
 import { PiStudentFill } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
+import { SiGoogleclassroom } from "react-icons/si";
 
 import './Navbar.css';
 
@@ -10,7 +11,8 @@ import './Navbar.css';
 const Navbar = ({ active, onNavigate, logout }) => {
   const navItems = [
     { key: 'timetable', label: 'Timetable', icon: <SlCalender /> },
-    { key: 'profile', label: 'Profile', icon: <PiStudentFill /> }
+    { key: 'profile', label: 'Profile', icon: <PiStudentFill /> },
+    { key: 'class', label: 'Class', icon: <SiGoogleclassroom /> }
   ];
 
   return (

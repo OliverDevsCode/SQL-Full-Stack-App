@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();  // Corrected this line
+const router = express.Router();  
 const authenticateJWT = require('../middleware/authenticateJWT');
 
 
