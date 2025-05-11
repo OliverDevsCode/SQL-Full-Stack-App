@@ -10,6 +10,7 @@ I have seperated this repository across 2 servers to allow you to test it out:
 ### Demo Login
   - Username: 1
   - Password: Test (Case Sensitive)
+  - ⚠️ Demo Warning: This is a public demo intended for testing and educational purposes only. Do not enter any real or personal information (e.g. real names, passwords, or email addresses)
 
 ## Prerequisites
 
