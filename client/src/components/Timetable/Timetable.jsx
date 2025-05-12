@@ -35,7 +35,6 @@ function chunkArray(arr, size) {
         period++;
         i++;
       } else if (current.Day === previous && current.Period !== period) {
-        // Fill free period
         let freePeriod = {
           title: 'Free Period',
           location: 'Anywhere',
@@ -46,7 +45,17 @@ function chunkArray(arr, size) {
         day.push(freePeriod);
         period++;
       } else if (current.Day !== previous) {
-        // Save the finished day
+        while (period <= 5) {
+          let freePeriod = {
+            title: 'Free Period',
+            location: 'Anywhere',
+            Period: period,
+            Day: previous,
+            teacherName: 'n/a',
+          };
+          day.push(freePeriod);
+          period++;
+        }
         week.push(day);
         day = [];
         period = 1;
@@ -54,8 +63,17 @@ function chunkArray(arr, size) {
       }
     }
 
-    // Push the final day if not yet added
     if (day.length > 0) {
+      while (day.length < 5) {
+        let freePeriod = {
+          title: 'Free Period',
+          location: 'Anywhere',
+          Period: day.length + 1,
+          Day: previous,
+          teacherName: 'n/a',
+        };
+        day.push(freePeriod);
+      }
       week.push(day);
     }
 
@@ -63,7 +81,7 @@ function chunkArray(arr, size) {
   }
 
 const Timetable = ({ lessons }) => {
-  // Split into columns of 5
+  // split into columns of 5
   const columns = chunkArray(lessons, 5);
 
   return (
