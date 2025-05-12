@@ -11,8 +11,8 @@ import './Navbar.css';
 const Navbar = ({ active, onNavigate, logout }) => {
   const navItems = [
     { key: 'timetable', label: 'Timetable', icon: <SlCalender /> },
-    { key: 'profile', label: 'Profile', icon: <PiStudentFill /> },
-    { key: 'class', label: 'Class', icon: <SiGoogleclassroom /> }
+    { key: 'classes', label: 'Classes', icon: <SiGoogleclassroom /> },
+    { key: 'profile', label: 'Profile', icon: <PiStudentFill /> }
   ];
 
   return (

@@ -7,7 +7,7 @@ const authenticateJWT = require('../middleware/authenticateJWT');
 router.get('/data', authenticateJWT, (req, res, next) => {
   const userId = req.user.user_id;
 
-  // 1️⃣ First: load profile
+  // load profile
   const profileSql = `
     SELECT 
       users.email,
@@ -22,7 +22,7 @@ router.get('/data', authenticateJWT, (req, res, next) => {
   db.query(profileSql, [userId], (err, profileResults) => {
     if (err) return next(err);
 
-    // 2️⃣ Then: load lessons
+    // load lessons
     const lessonsSql = `
     SELECT
       l.title,
@@ -45,17 +45,32 @@ router.get('/data', authenticateJWT, (req, res, next) => {
     db.query(lessonsSql, [userId], (err, lessonsResults) => {
       if (err) return next(err);
 
-      // 3️⃣ Now we have both profileResults and lessonsResults:
-      res.json({
+      // Now we have both profileResults and lessonsResults load classesResults:
+
+      const classesSQL = `
+        SELECT s.name, c.class_name
+        FROM enrollments e
+        JOIN classes c ON e.ClassId = c.ClassId
+        JOIN subjects s ON c.SubjectId = s.SubjectId
+        WHERE e.UserId = ?;
+        `;
+       
+      db.query(classesSQL, [userId], (err,classesResults)=>{
+        if (err) return next(err);
+
+        res.json({
         message: 'This is protected data.',
         user: req.user,
         data: {
           profile: profileResults[0],   // single object
-          lessons: lessonsResults       // array of lesson objects
+          lessons: lessonsResults,       // array of lesson objects
+          classes: classesResults
         }
       });
-    });
-  });
+        
+      }); // classes DB query 
+    });// lessons DB query 
+  }); //profile DB query 
 });
 
 module.exports = router;

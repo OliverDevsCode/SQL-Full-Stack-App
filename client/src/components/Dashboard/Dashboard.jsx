@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import  Navbar  from '../Navbar/Navbar';
 import  Timetable  from '../Timetable/Timetable';
 import  ProfileCard  from '../ProfileCard/ProfileCard';
+import  Classes  from '../Classes/Classes';
 
 
 import './Dashboard.css';
@@ -11,6 +12,7 @@ export default function Dashboard() {
   const [active, setActive] = useState('timetable');
   const [lessons, setLessons] = useState([]);
   const [profile, setProfile] = useState({});
+  const [classes, setClasses] = useState({});
   const [UserId, setUserId] = useState({});
   const navigate = useNavigate();
 
@@ -27,6 +29,7 @@ export default function Dashboard() {
       setLessons(data.lessons);
       setProfile(data.profile);
       setUserId(user.user_id)
+      setClasses(data.classes)
     }
     fetchData();
   }, []);
@@ -43,6 +46,7 @@ export default function Dashboard() {
       <main>
         {active === 'timetable' && <Timetable lessons={lessons} />}
         {active === 'profile' && <ProfileCard profile={profile} UserId={UserId} />}
+        {active === 'classes' && <Classes classes={classes}/>}
       </main>
     </div>
   );

@@ -16,7 +16,7 @@ function getHash(input) {
 router.post('/login',async(req,res)=>{
   const { username , password, rememberMe} = req.body
 
-  console.log(`received username:${username}, password:${password}, rememberMe: ${rememberMe}`)
+  // console.log(`received username:${username}, password:${password}, rememberMe: ${rememberMe}`) // only use in local testing
 
   //checking username/password
 
