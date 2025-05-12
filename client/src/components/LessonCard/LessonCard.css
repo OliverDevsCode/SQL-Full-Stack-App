@@ -19,3 +19,22 @@
   /* NEW: subtle pop on hover */
   transform: scale(1.05);
 }
+
+.lesson-card-free-card {
+  background: rgba(200, 200, 255, 0.15);
+  border: 1px solid rgba(200, 200, 255, 0.3);
+  color: #e0e0ff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  transition: transform .2s ease;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.lesson-card-free-card:hover {
+  transform: scale(1.05);
+}
