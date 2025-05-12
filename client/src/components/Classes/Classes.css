@@ -1,0 +1,16 @@
+.Classes {
+  padding: 20px;
+}
+
+.classes-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
+  gap: 20px;
+}
+
+/* On screens smaller than 600px, switch to 1 column */
+@media (max-width: 1000px) {
+  .classes-column {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+}

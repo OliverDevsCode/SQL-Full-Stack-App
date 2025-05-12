@@ -1,12 +1,13 @@
 import React from 'react'
 import ClassCard from '../ClassCard/ClassCard'
+import './Classes.css'
 
 const Classes = ({classes}) => {
   console.log(`Classes:`)
   console.log(classes)
   return (
     <div className='Classes'>
-        <div className="timetable-column">
+        <div className="classes-column">
           {classes.map((classes) => (
             <ClassCard
               subject={classes.name}
